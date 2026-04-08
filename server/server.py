@@ -1,1 +1,1 @@
-from flask import Flask, requirest, jsonify
+from flask import Flask, request, jsonify
