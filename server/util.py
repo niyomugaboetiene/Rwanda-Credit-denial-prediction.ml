@@ -18,8 +18,13 @@ def load_artifacts():
     global __district
     global __model
 
-with open("./artifacts/columns.json", "r") as f:
-    __data_columns = json.load(f)['data_columns']
+    with open("./artifacts/columns.json", "r") as f:
+        __data_columns = json.load(f)['data_columns']
+        __district = __data_columns[8:38]
+        __province = __data_columns[3:7]
 
-with open("/artifacts/model.pickle", "rb") as f:
-    __model = pickle.load(f)
+    with open("/artifacts/model.pickle", "rb") as f:
+        __model = pickle.load(f)
+    
+    print("Loading saved artifacts done.")
+
