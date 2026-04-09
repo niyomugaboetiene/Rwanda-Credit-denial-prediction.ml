@@ -30,7 +30,7 @@ def predict_house_credit_denail():
     province = request.json['province']
     s10aq3_converted = int(request.json['s10aq3_converted'])
     ur_converted = int(request.json['ur_converted'])
-    poverty_converted = float(request.json['poverty_converted'])
+    poverty_converted = int(request.json['poverty_converted'])
     quintile_converted = float(request.json['quintile_converted'])
 
     response = jsonify({
