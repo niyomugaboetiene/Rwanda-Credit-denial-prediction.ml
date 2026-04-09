@@ -23,8 +23,8 @@ def load_artifacts():
 
     with open("./artifacts/columns.json", "r") as f:
         __data_columns = json.load(f)['data_columns']
-        __district = __data_columns[8:38]
-        __province = __data_columns[3:7]
+        __district = __data_columns[8:39]
+        __province = __data_columns[3:8]
 
     with open("/artifacts/model.pickle", "rb") as f:
         __model = pickle.load(f)
