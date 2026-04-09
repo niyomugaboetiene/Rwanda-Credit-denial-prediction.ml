@@ -17,12 +17,12 @@ def get_province_names():
 
 def predict_credit_denial(district, province, s10aq3_converted, ur_converted, poverty_converted, quintile_converted):
     try:
-         district_index = __data_columns.index(district.lower())
-         province_index = __data_columns.index(province.lower())
-         quintile_index = __data_columns.index(quintile_converted)
-         poverity_index = __data_columns.index(poverity_index)
-         s10aq3_index = __data_columns.index(s10aq3_converted)
-         ur_index = __data_columns.index(ur_converted)
+         district_index = __data_columns.index(district.lower())  if district.lower() in __data_columns else -1
+         province_index = __data_columns.index(province.lower()) if province.lower() in __data_columns else -1
+         quintile_index = __data_columns.index("quintile_converted")
+         poverity_index = __data_columns.index("poverty_converted")
+         s10aq3_index = __data_columns.index("s10aq3_converted")
+         ur_index = __data_columns.index("ur_converted")
 
          x = np.zeros(len(__data_columns))
 
@@ -39,7 +39,8 @@ def predict_credit_denial(district, province, s10aq3_converted, ur_converted, po
         
          return  __model.predict([x])[0]
 
-    except:
+    except Exception as e:
+        print("Error", e)
         x[district_index] = -1
         x[province_index] = -1
         x[ur_index] = -1
@@ -68,5 +69,6 @@ def load_artifacts():
 
 if __name__ == "__main__":
     load_artifacts()
-    print(f"District {len(get_district_names())}")
-    print(f"Province {get_province_names()}")
+    # print(f"District {len(get_district_names())}")
+    # print(f"Province {get_province_names()}")
+    print(f"Prediction is {predict_credit_denial('nyarugenge', 'City of Kigali', 1, 1, 2, 2)}")
