@@ -20,3 +20,6 @@ def load_artifacts():
 
 with open("./artifacts/columns.json", "r") as f:
     __data_columns = json.load(f)['data_columns']
+
+with open("/artifacts/model.pickle", "rb") as f:
+    __model = pickle.load(f)
