@@ -40,3 +40,8 @@ def predict_house_credit_denail():
     response.headers.add("Access-Control-Allow-Origin", "*")
 
     return response
+
+if __name__ == "__main__":
+    print("Server started successfully")
+    util.load_artifacts()
+    app.run()
