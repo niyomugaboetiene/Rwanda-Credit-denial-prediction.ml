@@ -1,5 +1,6 @@
 import pickle
 import json
+import sklearn
 
 __province = None
 __district = None
@@ -7,10 +8,10 @@ __model = None
 __data_columns = None
 
 def get_district_names():
-    __district
+    return __district
 
 def get_province_names():
-    __province
+    return __province
 
 
 def load_artifacts():
@@ -23,10 +24,10 @@ def load_artifacts():
 
     with open("./artifacts/columns.json", "r") as f:
         __data_columns = json.load(f)['data_columns']
-        __district = __data_columns[8:39]
+        __district = __data_columns[8:38]
         __province = __data_columns[3:8]
 
-    with open("/artifacts/model.pickle", "rb") as f:
+    with open("./artifacts/model.pickle", "rb") as f:
         __model = pickle.load(f)
     
     print("Loading saved artifacts done.")
@@ -34,3 +35,5 @@ def load_artifacts():
 
 if __name__ == "__main__":
     load_artifacts()
+    print(f"District {len(get_district_names())}")
+    print(f"Province {get_province_names()}")
