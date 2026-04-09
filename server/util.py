@@ -7,7 +7,10 @@ __model = None
 __data_columns = None
 
 def get_district_names():
-    pass
+    __district
+
+def get_province_names():
+    __province
 
 
 def load_artifacts():
@@ -28,3 +31,6 @@ def load_artifacts():
     
     print("Loading saved artifacts done.")
 
+
+if __name__ == "__main__":
+    load_artifacts()
