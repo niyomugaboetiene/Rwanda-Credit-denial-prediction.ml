@@ -37,7 +37,7 @@ def predict_credit_denial(district, province, s10aq3_converted, ur_converted, po
          if (province_index >= 0):
             x[province_index] = 1
         
-         y_pred = __model.predict([x])[0]
+         return  __model.predict([x])[0]
 
     except:
         x[district_index] = -1
@@ -46,8 +46,6 @@ def predict_credit_denial(district, province, s10aq3_converted, ur_converted, po
         x[s10aq3_index] = -1
         x[quintile_converted] = -1
 
-
-    return y_pred
 
 def load_artifacts():
 
