@@ -11,6 +11,7 @@ export const PredictingComonent = () => {
     const [quintile_converted, setQuintile_converted] = useState("");
     const [selectedDistrict, setSelectedDistrict] = useState("");
     const [selectedProvince, setSelectedProvince] = useState("");
+    const [prediction, setPrediction] = useState(null);
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
 
@@ -61,12 +62,21 @@ export const PredictingComonent = () => {
 
     const HandlePrediction = async () => {
         try {
-            await axios.post('http://127.0.0.1:5000/predict_credit_denial', {
+            setLoading(true);
+            const res = await axios.post('http://127.0.0.1:5000/predict_credit_denial', {
                selectedProvince,
                selectedDistrict,
-               Number(s10aq3_converted)
-
+               s10aq3_converted: Number(s10aq3_converted),
+               ur_converted: Number(ur_converted),
+               poverty_converted: Number(poverty_converted),
+               quintile_converted: Number(quintile_converted)
             });
+
+            setPrediction(res.data.result);
+            setLoading(false);
+        }  catch (err) {
+            console.error(err);
+            setMessage("Failed to predict");
         }
     } 
 
@@ -102,7 +112,7 @@ export const PredictingComonent = () => {
          
             <div>
                 <label htmlFor="">Choose your UR</label>
-                <select onChange={() => setUr_converted(e.target.value)}>
+                <select onChange={(e) => setUr_converted(e.target.value)}>
                      <option value="0">Rular </option>
                      <option value="1">Urban</option>
                 </select>
@@ -128,7 +138,15 @@ export const PredictingComonent = () => {
                 </select>
             </div>
 
-            <button>Get result</button>
+            <button onClick={HandlePrediction}>Get result</button>
+
+           {prediction !== null && (
+            <div>
+                <h2>Allowed for credit</h2>
+                 <p>{prediction}</p>
+            </div>
+           )}
+
         </div>
     )
 }
