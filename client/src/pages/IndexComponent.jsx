@@ -72,11 +72,11 @@ export const PredictingComonent = () => {
                quintile_converted: Number(quintile_converted)
             });
 
-            console.log("District", district);
-            console.log("province", province);
-            console.log("ur_converted", ur_converted);
-            console.log("poverty_converted", poverty_converted);
-            console.log("quintile_converted", quintile_converted);
+            // console.log("District", district);
+            // console.log("province", province);
+            // console.log("ur_converted", ur_converted);
+            // console.log("poverty_converted", poverty_converted);
+            // console.log("quintile_converted", quintile_converted);
             setPrediction(res.data.result);
             setLoading(false);
         }  catch (err) {
