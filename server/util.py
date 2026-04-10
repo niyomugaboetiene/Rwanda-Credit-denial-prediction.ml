@@ -37,6 +37,13 @@ def predict_credit_denial(district, province, s10aq3_converted, ur_converted, po
          if (province_index >= 0):
             x[province_index] = 1
         
+         print("------ DEBUG START ------")
+         print("District:", district)
+         print("Province:", province)
+         print("Vector:", x)
+         print("Non-zero values:", [i for i, v in enumerate(x) if v != 0])
+         print("Prediction:", __model.predict([x])[0])
+         print("------ DEBUG END ------")
          return  int(__model.predict([x])[0])
 
     except Exception as e:
