@@ -18,7 +18,7 @@ def get_province_names():
 @app.route("/get_district")
 def get_district_names():
     response = jsonify({
-        "province": util.get_district_names()
+        "district": util.get_district_names()
     })
 
     response.headers.add("Access-Control-Allow-Origin", "*")
