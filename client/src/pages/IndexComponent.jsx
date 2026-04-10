@@ -9,11 +9,45 @@ export const PredictingComonent = () => {
     const [ur_converted, setUr_converted] = useState(0);
     const [poverty_converted, setPoverty_converted] = useState(0);
     const [quintile_converted, setQuintile_converted] = useState(0);
+    const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState("");
 
 
     const GetProvinces = async() => {
         try {
-            const res = await axios.get('http://127.0.0.1:5000/get_province')
+            setLoading(true);
+            const res = await axios.get('http://127.0.0.1:5000/get_province');
+
+            if (res.data.province.length === 0) {
+                setMessage("No province");
+            }
+
+            setDistrictList(res.data.province);
+            setLoading(false);
+        } catch (err) {
+            console.error(err);
+            setMessage("Failed to load province");
+        }
+    }
+    
+    const GetDistrict = async() => {
+        try {
+            setLoading(true);
+            const res = await axios.get('http://127.0.0.1:5000/get_province');
+
+            if (res.data.province.length === 0) {
+                setMessage("No province");
+            }
+
+            setDistrictList(res.data.province);
+            setLoading(false);
+        } catch (err) {
+            console.error(err);
+            setMessage("Failed to load province");
         }
     } 
+
+    useEffect(() => {
+        GetProvinces();
+    }, []);
 }
