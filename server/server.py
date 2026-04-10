@@ -36,7 +36,7 @@ def predict_house_credit_denail():
     quintile_converted = float(request.json['quintile_converted'])
 
     response = jsonify({
-        "Allowed for credit": util.predict_credit_denial(district, province, s10aq3_converted, ur_converted, poverty_converted, quintile_converted)
+        "result": util.predict_credit_denial(district, province, s10aq3_converted, ur_converted, poverty_converted, quintile_converted),
     })
 
     response.headers.add("Access-Control-Allow-Origin", "*")
