@@ -2,6 +2,7 @@ import pickle
 import json
 import sklearn
 import numpy as np
+import pandas as pd
 
 __province = None
 __district = None
@@ -37,14 +38,15 @@ def predict_credit_denial(district, province, s10aq3_converted, ur_converted, po
          if (province_index >= 0):
             x[province_index] = 1
         
-         print("------ DEBUG START ------")
-         print("District:", district)
-         print("Province:", province)
-         print("Vector:", x)
-         print("Non-zero values:", [i for i, v in enumerate(x) if v != 0])
-         print("Prediction:", __model.predict([x])[0])
-         print("------ DEBUG END ------")
-         return  int(__model.predict([x])[0])
+        #  print("------ DEBUG START ------")
+        #  print("District:", district)
+        #  print("Province:", province)
+        #  print("Vector:", x)
+        #  print("Non-zero values:", [i for i, v in enumerate(x) if v != 0])
+        #  print("Prediction:", __model.predict([x])[0])
+        #  print("------ DEBUG END ------")
+         df = pd.DataFrame([x], columns=__data_columns)
+         return  int(__model.predict(df)[0])
 
     except Exception as e:
         print("Error", e)
