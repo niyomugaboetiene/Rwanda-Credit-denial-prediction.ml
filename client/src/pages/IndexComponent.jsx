@@ -10,8 +10,8 @@ export const PredictingComonent = () => {
     const [poverty_converted, setPoverty_converted] = useState("");
     const [quintile_converted, setQuintile_converted] = useState("");
     const [district, setSelectedDistrict] = useState("");
-    const [province, setSelectedProvince] = useState("");
-    const [prediction, setPrediction] = useState(null);
+    const [province, setSelectedProvince] = useState("city of kigali");
+    const [prediction, setPrediction] = useState("bugesera");
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
 
@@ -72,6 +72,11 @@ export const PredictingComonent = () => {
                quintile_converted: Number(quintile_converted)
             });
 
+            console.log("District", district);
+            console.log("province", province);
+            console.log("ur_converted", ur_converted);
+            console.log("poverty_converted", poverty_converted);
+            console.log("quintile_converted", quintile_converted);
             setPrediction(res.data.result);
             setLoading(false);
         }  catch (err) {
