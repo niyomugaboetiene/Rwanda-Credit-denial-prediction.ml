@@ -41,6 +41,7 @@ export const PredictingComonent = () => {
             }
 
             setDistrictList(res.data.district);
+            console.log(res.data.district);
             setLoading(false);
         } catch (err) {
             console.error(err);
@@ -60,9 +61,19 @@ export const PredictingComonent = () => {
     return (
         <div>
             <div>
+                <label htmlFor="">Select your province</label>
                 <select>
                     {provinceList?.map((prov, index) => (
                             <option value={`${prov}`} key={index}>{prov}</option>
+                    ))}
+                </select>
+            </div>
+            
+            <div>
+                <label htmlFor="">Select your District</label>
+                <select>
+                    {districtList?.map((dist, idx) => (
+                            <option value={`${dist}`} key={idx}>{dist}</option>
                     ))}
                 </select>
             </div>
