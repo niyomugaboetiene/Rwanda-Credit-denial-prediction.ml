@@ -148,7 +148,7 @@ export const PredictingComonent = () => {
            {prediction !== null && (
             <div>
                 <h2>Allowed for credit</h2>
-                 <p>{prediction}</p>
+                 <p>{prediction === 1 ? "Yes" : "No"}</p>
             </div>
            )}
 
