@@ -45,8 +45,7 @@ def predict_credit_denial(district, province, s10aq3_converted, ur_converted, po
         #  print("Non-zero values:", [i for i, v in enumerate(x) if v != 0])
         #  print("Prediction:", __model.predict([x])[0])
         #  print("------ DEBUG END ------")
-         df = pd.DataFrame([x], columns=__data_columns)
-         return  int(__model.predict(df)[0])
+         return  int(__model.predict([x])[0])
 
     except Exception as e:
         print("Error", e)
@@ -54,7 +53,7 @@ def predict_credit_denial(district, province, s10aq3_converted, ur_converted, po
         x[province_index] = -1
         x[ur_index] = -1
         x[s10aq3_index] = -1
-        x[quintile_converted] = -1
+        x[quintile_index] = -1
 
 
 def load_artifacts():
