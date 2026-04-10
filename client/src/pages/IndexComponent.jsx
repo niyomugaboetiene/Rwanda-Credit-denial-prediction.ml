@@ -18,11 +18,12 @@ export const PredictingComonent = () => {
             setLoading(true);
             const res = await axios.get('http://127.0.0.1:5000/get_province');
 
-            if (res.data.province.length === 0) {
-                setMessage("No province");
+            if (!res.data.province) {
+                setMessage("No province found");
             }
 
-            setDistrictList(res.data.province);
+            setProvinceList(res.data.province);
+            // console.log("Provinces", res.data.province)
             setLoading(false);
         } catch (err) {
             console.error(err);
@@ -33,13 +34,13 @@ export const PredictingComonent = () => {
     const GetDistrict = async() => {
         try {
             setLoading(true);
-            const res = await axios.get('http://127.0.0.1:5000/get_province');
+            const res = await axios.get('http://127.0.0.1:5000/get_district');
 
-            if (res.data.province.length === 0) {
-                setMessage("No province");
+            if (!res.data.district) {
+                setMessage("No District found");
             }
 
-            setDistrictList(res.data.province);
+            setDistrictList(res.data.district);
             setLoading(false);
         } catch (err) {
             console.error(err);
@@ -50,4 +51,21 @@ export const PredictingComonent = () => {
     useEffect(() => {
         GetProvinces();
     }, []);
+    
+    useEffect(() => {
+        GetDistrict();
+    }, []);
+
+
+    return (
+        <div>
+            <div>
+                <select>
+                    {provinceList?.map((prov, index) => (
+                            <option value={`${prov}`} key={index}>{prov}</option>
+                    ))}
+                </select>
+            </div>
+        </div>
+    )
 }
