@@ -9,8 +9,8 @@ export const PredictingComonent = () => {
     const [ur_converted, setUr_converted] = useState("");
     const [poverty_converted, setPoverty_converted] = useState("");
     const [quintile_converted, setQuintile_converted] = useState("");
-    const [selectedDistrict, setSelectedDistrict] = useState("");
-    const [selectedProvince, setSelectedProvince] = useState("");
+    const [district, setSelectedDistrict] = useState("");
+    const [province, setSelectedProvince] = useState("");
     const [prediction, setPrediction] = useState(null);
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
@@ -64,8 +64,8 @@ export const PredictingComonent = () => {
         try {
             setLoading(true);
             const res = await axios.post('http://127.0.0.1:5000/predict_credit_denial', {
-               selectedProvince,
-               selectedDistrict,
+               district,
+               province,
                s10aq3_converted: Number(s10aq3_converted),
                ur_converted: Number(ur_converted),
                poverty_converted: Number(poverty_converted),
