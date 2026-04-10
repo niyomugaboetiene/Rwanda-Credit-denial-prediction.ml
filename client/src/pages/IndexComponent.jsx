@@ -9,6 +9,8 @@ export const PredictingComonent = () => {
     const [ur_converted, setUr_converted] = useState("");
     const [poverty_converted, setPoverty_converted] = useState("");
     const [quintile_converted, setQuintile_converted] = useState("");
+    const [selectedDistrict, setSelectedDistrict] = useState("");
+    const [selectedProvince, setSelectedProvince] = useState("");
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
 
@@ -59,7 +61,12 @@ export const PredictingComonent = () => {
 
     const HandlePrediction = async () => {
         try {
-            await axios.post('http://127.0.0.1:5000/')
+            await axios.post('http://127.0.0.1:5000/predict_credit_denial', {
+               selectedProvince,
+               selectedDistrict,
+               Number(s10aq3_converted)
+
+            });
         }
     } 
 
@@ -69,7 +76,7 @@ export const PredictingComonent = () => {
             <h2>Rwanda Credit Denial AI-baed app</h2>
             <div>
                 <label htmlFor="">Hitamo Akarere</label>
-                <select>
+                <select onChange={(e) => setSelectedProvince(e.target.value)}>
                     {provinceList?.map((prov, index) => (
                             <option value={`${prov}`} key={index}>{prov}</option>
                     ))}
@@ -78,7 +85,7 @@ export const PredictingComonent = () => {
             
             <div>
                 <label htmlFor="">Select your District</label>
-                <select>
+                <select onChange={(e) => setSelectedDistrict(e.target.value)}>
                     {districtList?.map((dist, idx) => (
                             <option value={`${dist}`} key={idx}>{dist}</option>
                     ))}
@@ -87,7 +94,7 @@ export const PredictingComonent = () => {
 
             <div>
                 <label htmlFor="">Have you take credit before</label>
-                <select name="" id="">
+                <select onChange={(e) => setS10aq3_converted(e.target.value)}>
                      <option value="0">No</option>
                      <option value="1">Yes</option>
                 </select>
@@ -95,7 +102,7 @@ export const PredictingComonent = () => {
          
             <div>
                 <label htmlFor="">Choose your UR</label>
-                <select name="" id="">
+                <select onChange={() => setUr_converted(e.target.value)}>
                      <option value="0">Rular </option>
                      <option value="1">Urban</option>
                 </select>
@@ -103,7 +110,7 @@ export const PredictingComonent = () => {
           
             <div>
                 <label htmlFor="">Choose your category</label>
-                <select name="" id="">
+                <select onChange={(e) => setPoverty_converted(e.target.value)}>
                      <option value="2">Non Poor</option>
                      <option value="1">Moderately Poor</option>
                      <option value="0">Severally Poor</option>
@@ -112,7 +119,7 @@ export const PredictingComonent = () => {
         
             <div>
                 <label htmlFor="">Choose your quintile</label>
-                <select name="" id="">
+                <select onChange={(e) => setQuintile_converted(e.target.value)}>
                      <option value="0">Poor</option>
                      <option value="0.5">Poor/Mid</option>
                      <option value="1">Mid</option>
