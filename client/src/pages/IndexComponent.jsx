@@ -6,12 +6,12 @@ export const PredictingComonent = () => {
     const [districtList, setDistrictList] = useState(null);
     // district, province, s10aq3_converted, ur_converted, poverty_converted, quintile_converted
     const [s10aq3_converted, setS10aq3_converted] = useState(0);
-    const [ur_converted, setUr_converted] = useState("");
-    const [poverty_converted, setPoverty_converted] = useState("");
-    const [quintile_converted, setQuintile_converted] = useState("");
-    const [district, setSelectedDistrict] = useState("");
+    const [ur_converted, setUr_converted] = useState("0");
+    const [poverty_converted, setPoverty_converted] = useState("0");
+    const [quintile_converted, setQuintile_converted] = useState("0");
+    const [district, setSelectedDistrict] = useState("bugesera");
     const [province, setSelectedProvince] = useState("city of kigali");
-    const [prediction, setPrediction] = useState("bugesera");
+    const [prediction, setPrediction] = useState("");
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
 
