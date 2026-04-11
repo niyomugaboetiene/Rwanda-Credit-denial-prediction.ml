@@ -1,10 +1,10 @@
-import { PredictingComonent } from "./pages/IndexComponent";
+import { PredictingComponent } from "./pages/IndexComponent";
 
 function App() {
 
   return (
     <>
-        <PredictingComonent />
+        <PredictingComponent />
     </>
   )
 }
