@@ -84,9 +84,7 @@ export const PredictingComponent = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4">
       <div className="flex gap-8 max-w-6xl mx-auto">
-        {/* Left Column - Form */}
         <div className="flex-1 min-w-0">
-          {/* Header */}
           <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
             <h1 className="text-4xl font-bold text-gray-800 mb-2 text-center">
               🇷🇼 Rwanda Credit Denial
@@ -96,18 +94,14 @@ export const PredictingComponent = () => {
             </p>
           </div>
 
-          {/* Form Container */}
           <div className="bg-white rounded-lg shadow-xl p-8">
-            {/* Error/Message Alert */}
             {message && (
               <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
                 <p className="text-red-700 font-medium">{message}</p>
               </div>
             )}
 
-            {/* Form Fields */}
             <div className="space-y-5">
-              {/* Province Select */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Select Your Province
@@ -124,7 +118,6 @@ export const PredictingComponent = () => {
                 </select>
               </div>
 
-              {/* District Select */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Select Your District
@@ -141,7 +134,6 @@ export const PredictingComponent = () => {
                 </select>
               </div>
 
-              {/* Previous Credit */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Have You Taken Credit Before?
@@ -155,7 +147,6 @@ export const PredictingComponent = () => {
                 </select>
               </div>
 
-              {/* Urban/Rural */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Area Type
@@ -169,7 +160,6 @@ export const PredictingComponent = () => {
                 </select>
               </div>
 
-              {/* Poverty Category */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Poverty Category
@@ -184,7 +174,6 @@ export const PredictingComponent = () => {
                 </select>
               </div>
 
-              {/* Quintile */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Wealth Quintile
@@ -201,7 +190,6 @@ export const PredictingComponent = () => {
                 </select>
               </div>
 
-              {/* Submit Button */}
               <button
                 onClick={HandlePrediction}
                 disabled={loading}
@@ -242,7 +230,6 @@ export const PredictingComponent = () => {
           </div>
         </div>
 
-        {/* Right Column - Result */}
         <div className="w-96 sticky top-12 h-fit">
           {prediction !== null && prediction !== "" ? (
             <div className="bg-white rounded-lg shadow-xl p-8 animate-fadeIn">
@@ -310,7 +297,6 @@ export const PredictingComponent = () => {
             </div>
           )}
 
-          {/* Info Card */}
           <div className="bg-blue-50 rounded-lg shadow-lg p-6 mt-6 border-l-4 border-blue-600">
             <h4 className="font-bold text-blue-900 mb-3">ℹ️ How it works</h4>
             <ul className="text-sm text-blue-800 space-y-2">
@@ -323,7 +309,6 @@ export const PredictingComponent = () => {
         </div>
       </div>
 
-      {/* Add animation to CSS */}
       <style>{`
         @keyframes fadeIn {
           from {
