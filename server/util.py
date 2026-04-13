@@ -1,6 +1,6 @@
 import pickle
 import json
-import sklearn
+import imblearn
 import numpy as np
 import pandas as pd
 
